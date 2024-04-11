@@ -24,7 +24,7 @@ bool Solve::isSolvable() {
 	bool solvable = 0;
 	
 	while (currentIdx < (xSize * ySize)) {
-		cout << currentIdx << endl;
+		//cout << currentIdx << endl;
 		visitedIdx.push(currentIdx);
 		addNextMoves(currentIdx);
 

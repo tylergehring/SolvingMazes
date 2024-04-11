@@ -6,7 +6,7 @@ using namespace std;
 #include"LinkedList.h"
 #include"queue.h"
 
-//solves maze by utilizeing a visted array and a possible moves queue
+//solves maze by utilizeing a "visted" linked list and a "possible moves" queue
 
 class Solve {
 private:

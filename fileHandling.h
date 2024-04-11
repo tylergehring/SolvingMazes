@@ -5,7 +5,7 @@
 #include"Linkedlist.h"
 using namespace std;
 
-//reads from the target txt file and can return an array of the maze along
+//reads from the target txt file and can return an LinkedList of the maze along
 // with its dimentions.
 
 class ReadMaze {
