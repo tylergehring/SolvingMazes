@@ -24,7 +24,7 @@ ReadMaze::ReadMaze(string txtFile) {
 	while (mFile >> std::noskipws >> c) {
 		if (c != ' ' && c != '\n') {
 			c = tolower(c);
-			maze.push_back(c);
+			maze.push(c);
 			i++;
 		}
 
@@ -45,17 +45,14 @@ int ReadMaze::get_ySize() {
 	return ySize;
 }
 
-vector<char>* ReadMaze::get_mazePtr() {
+LinkedList<char>* ReadMaze::get_mazePtr() {
 	return &maze;
 }
 
 void ReadMaze::printMaze() {
-	
-	for (int i = 0; i < maze.size(); i++) {
-		cout << maze[i];
-	}
+	maze.print();
 }
 
 char ReadMaze::getMazeVal(int index) {
-	return maze[index];
+	return maze.getVal(index);
 }

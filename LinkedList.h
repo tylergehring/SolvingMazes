@@ -43,6 +43,9 @@ public:
 	T popBack();  //remove and return value of tail
 	void insert(int index, T val); //insert val based on index
 	bool isEmpty();
+	T getVal(int index);
+	void assign(int index, T val);
+
 
 };
 
@@ -219,3 +222,21 @@ bool LinkedList<T>::isEmpty() {
 	return 0;
 }
 
+template<typename T>
+T LinkedList<T>::getVal(int index) {
+	nodePtr temp = head;
+	for (int i = 0; i < index; i++) {
+		temp = temp->nxt;
+	}
+	return temp->data;
+}
+
+
+template <typename T>
+void LinkedList<T>::assign(int index, T val) {
+	nodePtr temp = head;
+	for (int i = 0; i < index; i++) {
+		temp = temp->nxt;
+	}
+	temp->data = val;
+}

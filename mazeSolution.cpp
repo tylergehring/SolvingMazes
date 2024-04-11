@@ -14,7 +14,7 @@ Solve::Solve(string txtFile) {
 
 	//make a copy of vector... this is temparary
 	for (int i = 0; i < (xSize * ySize); i++) {
-		maze.push_back(mz.getMazeVal(i));
+		maze.push(mz.getMazeVal(i));
 	}
 
 }
@@ -25,7 +25,7 @@ bool Solve::isSolvable() {
 	
 	while (currentIdx < (xSize * ySize)) {
 		cout << currentIdx << endl;
-		visitedIdx.push_back(currentIdx);
+		visitedIdx.push(currentIdx);
 		addNextMoves(currentIdx);
 
 		//if queue is not empty, pop from the top and reassign curr idx
@@ -50,7 +50,7 @@ bool Solve::isSolvable() {
 //returns index of the S character in the maze
 int Solve::findStart() {
 	for (int i = 0; i < (xSize * ySize); i++) {
-		if (tolower(maze[i]) == 's') {
+		if (tolower(maze.getVal(i) == 's')) {
 			return i;
 		}
 	}
@@ -64,7 +64,7 @@ int Solve::findStart() {
 //returns index of the G character in the maze
 int Solve::findEnd() {
 	for (int i = 0; i < (xSize * ySize); i++) {
-		if (tolower(maze[i]) == 'g') {
+		if (tolower(maze.getVal(i)) == 'g') {
 			return i;
 		}
 	}
@@ -76,7 +76,7 @@ int Solve::findEnd() {
 
 //returns true if the index is a place we can move to
 bool Solve::validMove(int index) {
-	if (maze[index] == '.' || maze[index] == 'g') {
+	if (maze.getVal(index) == '.' || maze.getVal(index) == 'g') {
 		return 1;
 	}
 	return 0;
@@ -89,38 +89,38 @@ void Solve::addNextMoves(int index) {
 		//CHECK RIGHT INDEX
 		if (validMove(index + 1) && !inVisited(index + 1)) {
 			nextMoveIdx.push(index + 1);
-			maze[index] = '>';
+			maze.assign(index, '>');
 		}
 
 		//CHECK BOTTOM INDEX
 		if (validMove(index + xSize) && !inVisited(index + xSize)) {
 			nextMoveIdx.push(index + xSize);
-			maze[index] = '|';
+			maze.assign(index, '|');
 		}
 	}
 	else {
 		//CHECK LEFT INDEX
 		if ((index % xSize) != 0 && validMove(index - 1) && !inVisited(index - 1)) {
 			nextMoveIdx.push(index - 1);
-			maze[index] = '<';
+			maze.assign(index, '<');
 		}
 
 		//CHECK RIGHT INDEX
 		if ((index % xSize) != (xSize - 1) && validMove(index + 1) && !inVisited(index + 1)) {
 			nextMoveIdx.push(index + 1);
-			maze[index] = '>';
+			maze.assign(index, '>');
 		}
 
 		//CHECK BOTTOM INDEX
 		if (index < (xSize * (ySize - 1)) && validMove(index + xSize) && !inVisited(index + xSize)) {
 			nextMoveIdx.push(index + xSize);
-			maze[index] = '|';
+			maze.assign(index, '|');
 		}
 
 		//CHECK UPPER INDEX
 		if (index > xSize && validMove(index - xSize) && !inVisited(index - xSize)) {
 			nextMoveIdx.push(index - xSize);
-			maze[index] = '^';
+			maze.assign(index, '|');
 		}
 	}
 }
@@ -136,8 +136,8 @@ int Solve::exicuteNextMove() {
 
 //returns true if the index is in visited
 bool Solve::inVisited(int index) {
-	for (int i = 0; i < visitedIdx.size(); i++) {
-		if (visitedIdx[i] == index) {
+	for (int i = 0; i < visitedIdx.getSize(); i++) {
+		if (visitedIdx.getVal(i) == index) {
 			return 1;
 		}
 	}
@@ -156,14 +156,14 @@ bool Solve::inNextMoveIdx(int index) {
 */
 
 void Solve::printVisitedIdx() {
-	for (int i = 0; i < visitedIdx.size(); i++) {
-		cout << visitedIdx[i] << endl;
+	for (int i = 0; i < visitedIdx.getSize(); i++) {
+		cout << visitedIdx.getVal(i)<< endl;
 	}
 }
 
 void Solve::printSolved() {
 	for (int i = 0; i < (xSize * ySize); i++) {
-		cout << maze[i];
+		cout << maze.getVal(i);
 		if ((i % xSize) == (xSize - 1)) {
 			cout << "\n";
 		}
