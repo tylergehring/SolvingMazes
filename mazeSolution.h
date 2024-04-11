@@ -1,16 +1,17 @@
 #pragma once
 
-#include<queue>
+
 #include<string>
 using namespace std;
 #include"LinkedList.h"
+#include"queue.h"
 
 //solves maze by utilizeing a visted array and a possible moves queue
 
 class Solve {
 private:
 	LinkedList<int> visitedIdx;
-	queue<int> nextMoveIdx;
+	Queue<int> nextMoveIdx;
 	LinkedList<char> maze;
 	int xSize;
 	int ySize;

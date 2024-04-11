@@ -29,7 +29,7 @@ bool Solve::isSolvable() {
 		addNextMoves(currentIdx);
 
 		//if queue is not empty, pop from the top and reassign curr idx
-		if (nextMoveIdx.size() > 0) {
+		if (nextMoveIdx.getSize() > 0) {
 			currentIdx = exicuteNextMove();
 
 			if (currentIdx == findEnd()) {
@@ -129,7 +129,7 @@ void Solve::addNextMoves(int index) {
 //pops next move out of the queue and returns the current index
 int Solve::exicuteNextMove() {
 
-	int idx = nextMoveIdx.front();
+	int idx = nextMoveIdx.getFront();
 	nextMoveIdx.pop();
 	return idx;
 }

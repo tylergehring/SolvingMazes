@@ -4,6 +4,11 @@
 
 using namespace std;
 
+// 
+// THIS IS A SPECIAL CASE QUEUE
+// NO REPEATED VALUES CAN BE IN THE QUEUE AT THE SAME TIME
+//
+
 template<typename T>
 class Queue {
 private:
@@ -14,13 +19,23 @@ public:
 	T getFront();
 	bool isEmpty();
 	void print();
+	int getSize();
 };
 
 
 
 template<typename T>
 void Queue<T>::push(T val) {
-	list.push(val);
+	bool inQueue = false;
+	for (int i = 0; i < list.getSize(); i++) {
+		if (val == list.getVal(i)) {
+			inQueue = true;
+		}
+	}
+
+	if (!inQueue) {
+		list.push(val);
+	}
 }
 
 template<typename T>
@@ -45,5 +60,10 @@ bool Queue<T>::isEmpty() {
 template<typename T>
 void Queue<T>::print() {
 	list.print();
+}
+
+template<typename T>
+int Queue<T>::getSize() {
+	return list.getSize();
 }
 

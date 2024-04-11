@@ -27,18 +27,19 @@ int main() {
 	cout << "The Maze is: " << x << endl;
 	maze2.printSolved();
 	
-	*/
+	
 	
 	Solve maze3("maze3.txt");
 	x = maze3.isSolvable();
 	cout << "The Maze is: " << x << endl;
 	maze3.printSolved();
-	/*
+	*/
 	
 	Solve maze4("maze4.txt");
 	x = maze4.isSolvable();
 	cout << "The Maze is: " << x << endl;
-	*/
+	maze4.printSolved();
+
 	return 0;
 	
 }
