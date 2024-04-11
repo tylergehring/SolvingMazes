@@ -89,32 +89,38 @@ void Solve::addNextMoves(int index) {
 		//CHECK RIGHT INDEX
 		if (validMove(index + 1) && !inVisited(index + 1)) {
 			nextMoveIdx.push(index + 1);
+			maze[index] = '>';
 		}
 
 		//CHECK BOTTOM INDEX
 		if (validMove(index + xSize) && !inVisited(index + xSize)) {
 			nextMoveIdx.push(index + xSize);
+			maze[index] = '|';
 		}
 	}
 	else {
 		//CHECK LEFT INDEX
 		if ((index % xSize) != 0 && validMove(index - 1) && !inVisited(index - 1)) {
 			nextMoveIdx.push(index - 1);
+			maze[index] = '<';
 		}
 
 		//CHECK RIGHT INDEX
 		if ((index % xSize) != (xSize - 1) && validMove(index + 1) && !inVisited(index + 1)) {
 			nextMoveIdx.push(index + 1);
+			maze[index] = '>';
 		}
 
 		//CHECK BOTTOM INDEX
 		if (index < (xSize * (ySize - 1)) && validMove(index + xSize) && !inVisited(index + xSize)) {
 			nextMoveIdx.push(index + xSize);
+			maze[index] = '|';
 		}
 
 		//CHECK UPPER INDEX
 		if (index > xSize && validMove(index - xSize) && !inVisited(index - xSize)) {
 			nextMoveIdx.push(index - xSize);
+			maze[index] = '^';
 		}
 	}
 }
@@ -155,3 +161,11 @@ void Solve::printVisitedIdx() {
 	}
 }
 
+void Solve::printSolved() {
+	for (int i = 0; i < (xSize * ySize); i++) {
+		cout << maze[i];
+		if ((i % xSize) == (xSize - 1)) {
+			cout << "\n";
+		}
+	}
+}

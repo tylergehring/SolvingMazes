@@ -27,6 +27,8 @@ public:
 	bool inVisited(int index); // true if the char is in visited
 	//bool inNextMoveIdx(int index); //true if the index value is in the queue
 	void printVisitedIdx();
+	void printSolved();
+	
 	
 
 };
